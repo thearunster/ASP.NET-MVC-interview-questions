@@ -167,50 +167,61 @@ Any web application has two main execution steps, first understanding the reques
 
 Creating the request object: The request object creation has four major steps. The following is the detailed explanation of the same(short cut to remember FFRCAR)
 
-Step 1: Fill route
+#### Step 1: Fill route
 
 MVC requests are mapped to route tables which in turn specify which controller and action to be invoked. So if the request is the first request the first thing is to fill the route table with routes collection. This filling of route table happens in the global.asax file.
 
-Step 2: Fetch route
+#### Step 2: Fetch route
 
 Depending on the URL sent “UrlRoutingModule” searches the route table to create “RouteData” object which has the details of which controller and action to invoke.
 
-Step 3: Request context created
+#### Step 3: Request context created
 
 The “RouteData” object is used to create the “RequestContext” object.
 
-Step 4: Controller instance created
+#### Step 4: Controller instance created
 
-This request object is sent to “MvcHandler” instance to create the controller class instance. Once the controller class object is created it calls the “Execute” method of the controller class.
+This request object is sent to `MvcHandler` instance to create the controller class instance. Once the controller class object is created it calls the `Execute` method of the controller class.
 
-Creating Response object: This phase has two steps executing the action and finally sending the response as a result to the view.
+#### Creating Response object: This phase has two steps executing the action and finally sending the response as a result to the view.
 
 ### List out different return types of a controller action method?
 
 Controller actions are methods defined in the controller class and responsible to perform required operations on the user's inputs like as form values, query strings values etc. with the help of Model and passing the results back to the View. There are total nine return types we can use to return results from controller to view. The base type of all these result types is ActionResult.
 
-ViewResult (View): This return type is used to return a webpage from an action method.Returns a ViewResult which renders the specified or default view by using controller View() helper method
+- #### `ViewResult` (View): 
+This return type is used to return a webpage from an action method.Returns a ViewResult which renders the specified or default view by using controller View() helper method
 
-PartialviewResult (Partialview): This return type is used to send a part of a view which will be rendered in another view. or Returns a PartialViewResult which renders the specified or default partial view (means a view without its layout) by using controller PartialView() helper method.
+- #### `PartialviewResult` (Partialview): 
+This return type is used to send a part of a view which will be rendered in another view. or Returns a PartialViewResult which renders the specified or default partial view (means a view without its layout) by using controller PartialView() helper method.
 
-RedirectResult (Redirect): This return type is used to redirect to any other controller and action method depending on the URL.or. Returns a RedirectResult which Issues an HTTP 301 or 302 redirection to a specific URL by using controller Redirect() helper method.
+- #### `RedirectResult` (Redirect): 
+This return type is used to redirect to any other controller and action method depending on the URL.or. Returns a RedirectResult which Issues an HTTP 301 or 302 redirection to a specific URL by using controller Redirect() helper method.
 RedirectToRouteResult (RedirectToAction, RedirectToRoute): This return type is used when we want to redirect to any other action method. or. Returns a RedirectToRouteResult which Issues an HTTP 301 or 302 redirection to an action method or specific route entry by using controller RedirectToAction(), RedirectToActionPermanent(), RedirectToRoute(), RedirectToRoutePermanent() helper methods.
 
-ContentResult (Content): This return type is used to return HTTP content type like text/plain as the result of the action. or . Returns a ContentResult which renders raw text like as "Hello, DotNet Tricks!" by using controller Content() helper method.
+- #### `ContentResult` (Content): 
+This return type is used to return HTTP content type like text/plain as the result of the action. or . Returns a ContentResult which renders raw text like as "Hello, DotNet Tricks!" by using controller Content() helper method.
 
-jsonResult (json): This return type is used when we want to return a JSON message. or. Returns a JsonResult which serializes an object in JSON format ( like as "{ "Message": Hello, World! }") and renders it by using controller Json() helper method.
+- #### `JsonResult` (json): 
+This return type is used when we want to return a JSON message. or. Returns a JsonResult which serializes an object in JSON format ( like as "{ "Message": Hello, World! }") and renders it by using controller Json() helper method.
 
-javascriptResult (javascript): This return type is used to return JavaScript code that will run in browser. or. Returns a JavaScriptResult which renders a snippet of JavaScript code like as "function hello() { alert(Hello, World!); }" by using controller JavaScript() helper method. This is used only in AJAX scenarios.
+- #### `JavaScriptResult` (javascript): 
+This return type is used to return JavaScript code that will run in browser. or. Returns a JavaScriptResult which renders a snippet of JavaScript code like as "function hello() { alert(Hello, World!); }" by using controller JavaScript() helper method. This is used only in AJAX scenarios.
 
-FileResult (File): This return type is used to send binary output in response. or.Returns a FileResult which renders the contents of a file like as PDF, DOC, Excel etc. by using controller File() helper method.
+- #### `FileResult` (File): 
+This return type is used to send binary output in response. or.Returns a FileResult which renders the contents of a file like as PDF, DOC, Excel etc. by using controller File() helper method.
 
-EmptyResult: This return type is used to return nothing (void) in the result. or. Returns no result returned by an action. This has no controller helper method.
+- #### `EmptyResult`: 
+This return type is used to return nothing (void) in the result. or. Returns no result returned by an action. This has no controller helper method.
 
-HttpNotFoundResult - Returns an HttpNotFoundResult which renders a 404 HTTP Status Code response by using controller HttpNotFound() helper method.
+- #### `HttpNotFoundResult`:
+Returns an HttpNotFoundResult which renders a 404 HTTP Status Code response by using controller HttpNotFound() helper method.
 
-HttpUnauthorizedResult - Returns an HttpUnauthorizedResult which renders a 401 HTTP Status Code (means "not authorized") response. This has no controller helper method. This is used for authentication (forms authentication or Windows authentication) to ask the user to log in.
+- #### `HttpUnauthorizedResult`: 
+Returns an HttpUnauthorizedResult which renders a 401 HTTP Status Code (means "not authorized") response. This has no controller helper method. This is used for authentication (forms authentication or Windows authentication) to ask the user to log in.
 
-HttpStatusCodeResult - Returns an HttpStatusCodeResult which renders a specified HTTP code response. This has no controller helper method.
+- #### `HttpStatusCodeResult` : 
+Returns an HttpStatusCodeResult which renders a specified HTTP code response. This has no controller helper method.
 
 ### What are Filters in MVC?
 
